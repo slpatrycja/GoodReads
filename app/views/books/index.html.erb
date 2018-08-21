@@ -5,6 +5,8 @@
   <%= submit_tag 'Search', name: nil %>
 <% end %>
 
+<%= link_to 'Sort by rate ascenting', books_sort_asc_path %>
+<%= link_to 'Sort by rate descenting', books_sort_desc_path %>
 <% @books.each do |book| %>
   <p>
     <h3><%= link_to book.title, book %></h3>
@@ -14,12 +16,7 @@
   </p>
   <p>
     <h4>Rating:
-    <% if book.ratings.count != 0
-        @avg_rate = '%.2f' % book.ratings.average(:number).to_f
-      else
-        @avg_rate = 0
-      end %>
-    <%= @avg_rate %></h4>
+    <%= book.avg_rate %></h4>
   </p>
   <hr>
 <% end %>

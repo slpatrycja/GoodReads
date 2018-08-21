@@ -6,6 +6,7 @@ class BooksController < ApplicationController
     else
       @books = Book.all.order("created_at DESC")
     end
+
   end
 
   def new
@@ -24,8 +25,26 @@ class BooksController < ApplicationController
     @reviews = Review.where(book: @book)
 
     @rating = Rating.new(book: @book)
-    avg_rate(@book)
+  end
 
+  def sort_asc
+      @books = Book.all.sort_by { |book| book.avg_rate }
+    if params[:search]
+      @books = Book.search(params[:search]).sort_by { |book| book.avg_rate }
+    else
+      @books = Book.all.sort_by { |book| book.avg_rate }
+    end
+    render 'index'
+  end
+
+  def sort_desc
+      @books = Book.all.sort_by { |book| -(book.avg_rate) }
+    if params[:search]
+      @books = Book.search(params[:search]).sort_by { |book| -(book.avg_rate) }
+    else
+      @books = Book.all.sort_by { |book| -(book.avg_rate) }
+    end
+    render 'index'
   end
 
   private
@@ -34,12 +53,4 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :author, :description)
   end
 
-  def avg_rate(book)
-    @avg_rate = if book.ratings.count != 0
-      '%.2f' % book.ratings.average(:number).to_f
-    else
-      0
-    end
-    @avg_rate
-  end
 end
