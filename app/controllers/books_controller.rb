@@ -21,6 +21,15 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @review = Review.new(book: @book)
     @reviews = Review.where(book: @book)
+
+    @rating = Rating.new(book: @book)
+    ratings = Rating.where(book: @book)
+    @avg_rate = if  ratings.count != 0
+      '%.2f' % ((ratings.sum(:number) + 0.0)/ratings.count)
+    else
+      0
+    end
+
   end
 
   private

@@ -4,4 +4,5 @@ class Book < ApplicationRecord
   end
 
   has_many :reviews
+  has_many :ratings
 end

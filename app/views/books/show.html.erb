@@ -10,7 +10,13 @@
 </p>
 <hr>
 
-
+<h2>Rate the book</h2>
+<%= form_for @rating do |f| %>
+  <%= f.hidden_field :book_id %>
+  <%= select_tag :number, options_for_select(1..10) %>
+  <%= f.submit 'Rate' %>
+<% end %>
+<hr>
 <h2>Read this book? Leave a review!</h2>
 <%= form_for @review do |f| %>
   <%= f.hidden_field :book_id %>
@@ -29,6 +35,11 @@
 <hr>
 
 <h2>See what others think!</h2>
+<p>
+  <strong>Overall rating: </strong>
+  <%= @avg_rate %>
+</p>
+
 <% @reviews.each do |review| %>
 <div class='review_box' style="border: 2px solid grey; width: 300px; height: auto;
 padding:5px;">
