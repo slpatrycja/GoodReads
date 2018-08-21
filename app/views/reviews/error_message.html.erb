@@ -1,0 +1,14 @@
+<%= link_to 'Back', @review.book %>
+<div class='error_box' style="width: 400px; height: auto; background-color: orange;">
+  <% if @review.errors.any? %>
+  <div>
+    <h2><%=pluralize(@review.errors.count, 'error')%>
+      made this review unable to be saved</h2>
+    <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </uL>
+  </div>
+<% end %>
+</div>

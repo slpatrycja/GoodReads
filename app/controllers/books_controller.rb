@@ -19,6 +19,8 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @review = Review.new(book: @book)
+    @reviews = Review.where(book: @book)
   end
 
   private

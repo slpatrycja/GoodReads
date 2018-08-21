@@ -9,3 +9,34 @@
   <%= @book.description %>
 </p>
 <hr>
+
+
+<h2>Read this book? Leave a review!</h2>
+<%= form_for @review do |f| %>
+  <%= f.hidden_field :book_id %>
+  <p>
+    <%= f.label :nick %>
+    <%= f.text_field :nick %>
+  </p>
+  <p>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit 'Add review' %>
+  </p>
+<% end %>
+<hr>
+
+<h2>See what others think!</h2>
+<% @reviews.each do |review| %>
+<div class='review_box' style="border: 2px solid grey; width: 300px; height: auto;
+padding:5px;">
+  <p>
+    <strong><%= review.nick%></strong><i>&nbspsays...</i>
+  </p>
+  <p>
+    &nbsp&nbsp&nbsp<%= review.body %>
+  </p>
+</div><br>
+<% end %>
