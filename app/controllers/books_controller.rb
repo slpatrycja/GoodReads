@@ -28,7 +28,6 @@ class BooksController < ApplicationController
   end
 
   def sort_asc
-      @books = Book.all.sort_by { |book| book.avg_rate }
     if params[:search]
       @books = Book.search(params[:search]).sort_by { |book| book.avg_rate }
     else
@@ -38,7 +37,6 @@ class BooksController < ApplicationController
   end
 
   def sort_desc
-      @books = Book.all.sort_by { |book| -(book.avg_rate) }
     if params[:search]
       @books = Book.search(params[:search]).sort_by { |book| -(book.avg_rate) }
     else
