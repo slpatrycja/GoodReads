@@ -1,8 +1,12 @@
 class BooksController < ApplicationController
-
   def index
     if params[:search]
-      @books = Book.search(params[:search]).order("created_at DESC")
+        @books = Book.search(params[:search])
+        if params[:order]
+          @books = @books.sort_by { |book| sort_by_order_params(book)}
+        end
+    elsif params[:order]
+        @books = Book.all.sort_by { |book| sort_by_order_params(book)}
     else
       @books = Book.all.order("created_at DESC")
     end
@@ -22,28 +26,9 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @review = Review.new(book: @book)
-    @reviews = Review.where(book: @book)
-
-    @rating = Rating.new(book: @book)
+    provide_to_show(@book)
   end
 
-  def sort_asc
-    if params[:search]
-      @books = Book.search(params[:search]).sort_by { |book| book.avg_rate }
-    else
-      @books = Book.all.sort_by { |book| book.avg_rate }
-    end
-    render 'index'
-  end
-
-  def sort_desc
-    if params[:search]
-      @books = Book.search(params[:search]).sort_by { |book| -(book.avg_rate) }
-    else
-      @books = Book.all.sort_by { |book| -(book.avg_rate) }
-    end
-    render 'index'
-  end
 
   private
 
@@ -51,4 +36,17 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :author, :description)
   end
 
+  def provide_to_show(book)
+    @book = book
+    @reviews = Review.where(book: @book)
+    @rating = Rating.new(book: @book)
+  end
+
+  def sort_by_order_params(book)
+    if params[:order] == 'asc'
+      book.avg_rate
+    elsif params[:order] == 'desc'
+      -(book.avg_rate)
+    end
+  end
 end

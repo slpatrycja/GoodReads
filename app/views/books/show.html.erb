@@ -32,6 +32,19 @@
     <%= f.submit 'Add review' %>
   </p>
 <% end %>
+
+  <% if @review.errors.any? %>
+  <div>
+    <h2><%=pluralize(@review.errors.count, 'error')%>
+      prevented from saving this review</h2>
+    <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </uL>
+  </div>
+<% end %>
+
 <hr>
 
 <h2>See what others think!</h2>
@@ -41,8 +54,7 @@
 </p>
 
 <% @reviews.each do |review| %>
-<div class='review_box' style="border: 2px solid grey; width: 300px; height: auto;
-padding:5px;">
+<div class='review_box'>
   <p>
     <strong><%= review.nick%></strong><i>&nbspsays...</i>
   </p>
