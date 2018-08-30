@@ -10,7 +10,6 @@ class BooksController < ApplicationController
     else
       @books = Book.all.order("created_at DESC")
     end
-
   end
 
   def new
@@ -29,7 +28,10 @@ class BooksController < ApplicationController
     provide_to_show(@book)
   end
 
-
+  def top_books
+    @books = Book.all.sort_by { |book| -(book.avg_rate) }.first(10)
+  end
+  
   private
 
   def book_params
