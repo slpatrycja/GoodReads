@@ -13,8 +13,22 @@
   <body>
     <div class='heading'>
       <h1>Welcome to GoodReads</h1>
+      <a href='javascript:void(0)' id="openbtn" class="openbtn" onclick="openNav()">☰</a>
     </div>
-    
+    <div id="mySidenav" class='sidenav'>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X Close nav</a><hr>
+      <%= link_to 'Homepage', root_path %><hr>
+      <% if logged_in? %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete %><hr>
+        <%= link_to 'Add new book', new_book_path %><hr>
+      <% else %>
+        <%= link_to 'Log in', new_user_session_path %><hr>
+        <%= link_to 'Sign up', new_user_registration_path %><hr>
+      <% end %>
+      <%= link_to 'TOP 10', top_ten_path %><hr>
+      <%= link_to 'All books', books_path %>
+    </div>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
