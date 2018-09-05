@@ -1,0 +1,14 @@
+<%= form_for [@book, @review] do |f| %>
+  <%= f.hidden_field :book_id %>
+  <p>
+    <%= f.label :nick %>
+    <%= f.text_field :nick %>
+  </p>
+  <p>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit 'Add review' %>
+  </p>
+<% end %>

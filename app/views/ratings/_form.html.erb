@@ -1,0 +1,5 @@
+<%= form_for [@book, @rating] do |f| %>
+  <%= f.hidden_field :book_id %>
+  <%= select_tag :number, options_for_select(1..10) %>
+  <%= f.submit 'Rate' %>
+<% end %>

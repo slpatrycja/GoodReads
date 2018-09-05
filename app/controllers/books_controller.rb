@@ -18,8 +18,11 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.save
-    redirect_to books_path
+    if @book.save
+      redirect_to books_path
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -31,7 +34,7 @@ class BooksController < ApplicationController
   def top_books
     @books = Book.all.sort_by { |book| -(book.avg_rate) }.first(10)
   end
-  
+
   private
 
   def book_params

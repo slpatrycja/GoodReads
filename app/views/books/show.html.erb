@@ -11,40 +11,12 @@
 <hr>
 
 <h2>Rate the book</h2>
-<%= form_for @rating do |f| %>
-  <%= f.hidden_field :book_id %>
-  <%= select_tag :number, options_for_select(1..10) %>
-  <%= f.submit 'Rate' %>
-<% end %>
+<%= render 'ratings/form' %>
 <hr>
+
 <h2>Read this book? Leave a review!</h2>
-<%= form_for @review do |f| %>
-  <%= f.hidden_field :book_id %>
-  <p>
-    <%= f.label :nick %>
-    <%= f.text_field :nick %>
-  </p>
-  <p>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit 'Add review' %>
-  </p>
-<% end %>
-
-  <% if @review.errors.any? %>
-  <div>
-    <h2><%=pluralize(@review.errors.count, 'error')%>
-      prevented from saving this review</h2>
-    <ul>
-      <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </uL>
-  </div>
-<% end %>
-
+<%= render 'errors', resource: @review %>
+<%= render 'reviews/form' %>
 <hr>
 
 <h2>See what others think!</h2>
@@ -53,13 +25,4 @@
   <%= @book.avg_rate %>
 </p>
 
-<% @reviews.each do |review| %>
-<div class='review_box'>
-  <p>
-    <strong><%= review.nick%></strong><i>&nbspsays...</i>
-  </p>
-  <p>
-    &nbsp&nbsp&nbsp<%= review.body %>
-  </p>
-</div><br>
-<% end %>
+<%= render @reviews %>

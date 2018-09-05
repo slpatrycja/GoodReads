@@ -1,0 +1,10 @@
+
+<% if resource.errors.any? %>
+  <h3><%= pluralize(resource.errors.messages.count, 'error') %>
+  prohibited this <%= resource_name(resource)%> from being added:</h3>
+  <ul>
+    <% resource.errors.messages.each do |column, messages| %>
+      <li><%= column.capitalize %> <%= messages.first %></li>
+    <% end %>
+  </ul>
+<% end %>

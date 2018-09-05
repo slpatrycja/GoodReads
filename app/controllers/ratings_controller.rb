@@ -1,7 +1,7 @@
 class RatingsController < ApplicationController
 
   def create
-    @book = Book.find(params[:rating][:book_id])
+    @book = Book.find(params[:book_id])
     @rating = @book.ratings.create(rating_params)
     redirect_to @book
   end
@@ -9,6 +9,6 @@ class RatingsController < ApplicationController
   private
 
   def rating_params
-    params.permit(:number)
+    params.permit(:number).merge(book: @book)
   end
 end

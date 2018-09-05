@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def create
-    @book = Book.find(params[:review][:book_id])
+    @book = Book.find(params[:book_id])
     @review =  @book.reviews.new(review_params)
     provide_to_show(@book)
 
@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:nick, :body)
+    params.require(:review).permit(:nick, :body).merge(book: @book)
   end
 
   def provide_to_show(book)

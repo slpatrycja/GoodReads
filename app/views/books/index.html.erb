@@ -2,24 +2,11 @@
 <% if user_signed_in? %>
   <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
 <% end %>
-<%= form_tag books_path, :method => 'get' do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag 'Search', name: nil %>
-<% end %>
+
+<%= render 'search' %>
 
 <%= link_to 'Sort by rate ascenting', books_path(:search => params[:search], :order => 'asc')%>
 <%= link_to 'Sort by rate descenting', books_path(:search => params[:search], :order => 'desc')%>
 <%= link_to 'TOP10', top_ten_path %>
-<% @books.each do |book| %>
-  <p>
-    <h3><%= link_to book.title, book %></h3>
-  </p>
-  <p>
-    <h4><%= book.author %></h4>
-  </p>
-  <p>
-    <h4>Rating:
-    <%= book.avg_rate %></h4>
-  </p>
-  <hr>
-<% end %>
+
+<%= render @books %>
