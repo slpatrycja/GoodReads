@@ -1,5 +1,7 @@
 <h1>Our books</h1>
-
+<% if user_signed_in? %>
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+<% end %>
 <%= form_tag books_path, :method => 'get' do %>
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag 'Search', name: nil %>
