@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+html, body {
+   padding:0px;
+   margin:0px;
+   background: white;
+}
+
+.heading {
+  width:100%;
+  position:relative;
+  height: 200px;
+  background-image: url('http://www.intrawallpaper.com/static/images/White-Background-BD1.png');
+  background-color: transparent;
+  background-size: auto;
+  margin: 0;
+}
+
+.heading h1 {
+  color: orange;
+  font-family: 'Amatic SC', cursive;
+  font-size: 100px;
+  padding:20px;
+  margin:0;
+}
