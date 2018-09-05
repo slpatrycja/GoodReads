@@ -1,3 +1,78 @@
 // Place all the styles related to the Books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#title {
+  color: orange;
+  font-family: 'Oswald', sans-serif;
+  padding:0;
+  margin:0;
+  margin-top: -30px;
+  margin-left: 5%;
+
+}
+
+.searchbox {
+  float: right;
+  position: absolute;
+  width: auto;
+  margin-left: 50%;
+  padding-right:0;
+}
+
+.books_layout_table {
+  width: 100%;
+  padding:10px;;
+  margin-bottom:20px;;
+  float:right;
+  margin-left:50px;
+
+}
+
+.book_card {
+  border: grey solid 3px;
+  width:300px;
+  height:auto;;
+  padding:20px;
+  border-radius: 10px;
+  margin:15px;
+  margin-top: 30px;
+  position: relative;
+}
+.books {
+  margin-top: 70px;
+}
+.book_card p {
+  font-family: 'ABeeZee', sans-serif;
+  padding-left:10%;
+}
+
+#book_title{
+  margin:0;
+  padding:0;
+  display:inline;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 22px;
+  text-decoration: none;
+  color:black;
+}
+
+// .books_layout_table th:first {
+//   width: 400px;
+//   padding:0;
+//   margin:0;
+// }
+// #search {
+//   margin-top: -30px;
+//   margin-bottom: 20px;
+//   width: 200px;
+//   height:30px;
+//   float:right;
+// }
+//
+// #searchbtn {
+//   float:right;
+//   margin-right:20px;
+//   margin-top:-50px;
+//   margin-left:10px;
+//   margin-bottom: 20px;

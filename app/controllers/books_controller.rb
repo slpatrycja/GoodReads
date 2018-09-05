@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, only: :new
   def index
     if params[:search]
         @books = Book.search(params[:search])

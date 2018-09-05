@@ -1,12 +1,25 @@
-<h1>Our books</h1>
-<% if user_signed_in? %>
-  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-<% end %>
 
-<%= render 'search' %>
+<% @title = 'Our books' %>
+<table class='books_layout_table'>
+  <th>
+    <button class='btn btn-warning'>
+      <%= link_to 'Sort by rate ascenting',
+          books_path(:search => params[:search],
+          :order => 'asc')%>
+    </button>
+  </th>
+  <th>
+    <button class='btn btn-warning'>
+      <%= link_to 'Sort by rate descenting',
+          books_path(:search => params[:search],
+          :order => 'desc')%>
+    </button>
+  </th>
+  <th>
+    <%= render 'search' %>
+  </th>
+</table>
 
-<%= link_to 'Sort by rate ascenting', books_path(:search => params[:search], :order => 'asc')%>
-<%= link_to 'Sort by rate descenting', books_path(:search => params[:search], :order => 'desc')%>
-<%= link_to 'TOP10', top_ten_path %>
-
-<%= render @books %>
+<div class='books'>
+  <%= render @books %>
+</div>

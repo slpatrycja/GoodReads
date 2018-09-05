@@ -7,17 +7,22 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet"
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   </head>
 
   <body>
-    <div class='heading'>
-      <h1>Welcome to GoodReads</h1>
+  <div class='container-fluid'>
+  <div class='row'>
+    <div class='heading col-md-12'>
+      <h1><%= @title %></h1>
       <a href='javascript:void(0)' id="openbtn" class="openbtn" onclick="openNav()">☰</a>
     </div>
-    <div id="mySidenav" class='sidenav'>
+  </div>
+  <div class='row'>
+    <div id="mySidenav" class='sidenav col-lg-2'>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X Close nav</a><hr>
-      <%= link_to 'Homepage', root_path %><hr>
+      <%= link_to 'Homepage', welcome_index_path %><hr>
       <% if user_signed_in? %>
         <%= link_to "Log out", destroy_user_session_path, method: :delete %><hr>
         <%= link_to 'Add new book', new_book_path %><hr>
@@ -28,9 +33,12 @@
       <%= link_to 'TOP 10', top_ten_path %><hr>
       <%= link_to 'All books', books_path %>
     </div>
-
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <div id='container_body'>
     <%= yield %>
+    </div>
+  </div>
+  </div>
   </body>
 </html>

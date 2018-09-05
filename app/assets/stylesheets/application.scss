@@ -18,7 +18,9 @@
 html, body {
    padding:0px;
    margin:0px;
-   background: white;
+   background-image: linear-gradient(90deg, #ffffff, #fbfcfe);
+   height: 100%;
+   width:100%;
 }
 
 .heading {
@@ -37,4 +39,47 @@ html, body {
   font-size: 100px;
   padding:20px;
   margin:0;
+}
+
+.sidenav {
+    height: 100%;
+    margin-top: 200px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #c0c6c9;
+    overflow-x: hidden;
+    padding-top: 20px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 2px 3px 2px grey;
+}
+
+.sidenav a, .sidenav a:link {
+    padding: 6px 8px 6px 16px;
+    display: inline;
+    font-size: 40px;
+    font-family: 'Amatic SC', cursive;
+    text-decoration: none;
+    color: white;
+
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+ .openbtn {
+   width: 50px;
+   height: 50px;
+   margin-bottom: 0;
+   color:black;
+   float: left;
+   margin: 10px;
+   display:none;
+
+ }
+#container_body {
+  margin-top: 40px;
+  margin-left:220px;
 }
