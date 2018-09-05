@@ -18,7 +18,7 @@
     <div id="mySidenav" class='sidenav'>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X Close nav</a><hr>
       <%= link_to 'Homepage', root_path %><hr>
-      <% if logged_in? %>
+      <% if user_signed_in? %>
         <%= link_to "Log out", destroy_user_session_path, method: :delete %><hr>
         <%= link_to 'Add new book', new_book_path %><hr>
       <% else %>

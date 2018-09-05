@@ -14,3 +14,16 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+function openNav() {
+  document.getElementById("mySidenav").style.width = '200px';
+  document.getElementById("mySidenav").style.display = "block";
+  document.getElementById('openbtn').style.display = 'none';
+  document.getElementById('content').style.marginLeft= '210px';
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.display = "none";
+    document.getElementById('openbtn').style.display = 'block';
+    document.getElementById('content').style.marginLeft= '10px';
+}
