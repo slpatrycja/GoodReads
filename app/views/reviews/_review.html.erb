@@ -4,4 +4,7 @@
 <p>
   &nbsp&nbsp&nbsp<%= review.body %>
 </p>
+<% if user_signed_in? %>
+  <%= link_to 'Delete', book_review_path(review), method: :delete %>
+<% end %>
 <br>
