@@ -1,22 +1,17 @@
 <%= link_to 'Back to books list', books_path %>
-<p>
-  <h1><%= @book.title %></h1>
-</p>
-<p>
-  <h4><%= @book.author %></h4>
-</p>
-<p>
-  <%= @book.description %>
-</p>
+
+<h1><%= @book.title %></h1>
+<h4><%= @book.author %></h4>
+<p><%= @book.description %></p>
 <hr>
 
 <h2>Rate the book</h2>
-<%= render 'ratings/form' %>
+  <%= render 'ratings/form' %>
 <hr>
 
-<h2>Read this book? Leave a review!</h2>
-<%= render 'errors', resource: @review %>
-<%= render 'reviews/form' %>
+<h2>Or leave a review!</h2>
+  <%= render 'errors', resource: @review %>
+  <%= render 'reviews/form' %>
 <hr>
 
 <h2>See what others think!</h2>

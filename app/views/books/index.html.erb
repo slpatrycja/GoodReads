@@ -5,8 +5,14 @@
 
 <%= render 'search' %>
 
-<%= link_to 'Sort by rate ascenting', books_path(:search => params[:search], :order => 'asc')%>
-<%= link_to 'Sort by rate descenting', books_path(:search => params[:search], :order => 'desc')%>
+<%= link_to 'Sort by rate ascenting',
+    books_path(:search => params[:search],
+    :order => 'asc')%>
+
+<%= link_to 'Sort by rate descenting',
+    books_path(:search => params[:search],
+    :order => 'desc')%>
+
 <%= link_to 'TOP10', top_ten_path %>
 
 <%= render @books %>

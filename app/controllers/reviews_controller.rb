@@ -17,10 +17,9 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:nick, :body).merge(book: @book)
   end
 
-  def provide_to_show(book)
-    @book = book
-    @reviews = Review.where(book: @book)
-    @rating = Rating.new(book: @book)
+  def provide_to_show(_book)
+    @reviews = Review.where(book: _book)
+    @rating = Rating.new(book: _book)
   end
 
 end

@@ -41,10 +41,9 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :author, :description)
   end
 
-  def provide_to_show(book)
-    @book = book
-    @reviews = Review.where(book: @book)
-    @rating = Rating.new(book: @book)
+  def provide_to_show(_book)
+    @reviews = Review.where(book: _book)
+    @rating = Rating.new(book: _book)
   end
 
   def sort_by_order_params(book)
