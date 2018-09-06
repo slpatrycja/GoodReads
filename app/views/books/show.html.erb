@@ -1,4 +1,8 @@
 <%= link_to 'Back to books list', books_path %>
+<% if user_signed_in? %>
+  <%= link_to 'Edit book', edit_book_path(@book) %>
+  <%= link_to 'Delete book', book_path, method: :delete %>
+<% end %>
 
 <h1><%= @book.title %></h1>
 <h4><%= @book.author %></h4>
